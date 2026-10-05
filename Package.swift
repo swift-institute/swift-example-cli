@@ -47,14 +47,15 @@ let package = Package(
             name: "example-cli",
             dependencies: [
                 .product(name: "Example", package: "swift-example"),
-                "Example CLI",
+                .target(name: "Example CLI"),
             ]
         ),
         .testTarget(
             name: "Example CLI Tests",
             dependencies: [
+                .product(name: "ISO 9945 Utility", package: "swift-iso-9945"),
                 .product(name: "Operation", package: "swift-operation"),
-                "Example CLI",
+                .target(name: "Example CLI"),
                 .product(name: "Example", package: "swift-example"),
                 .product(name: "Tagged", package: "swift-tagged"),
             ]
@@ -64,13 +65,15 @@ let package = Package(
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    target.swiftSettings = (target.swiftSettings ?? []) + [
-        .strictMemorySafety(),
-        .enableUpcomingFeature("ExistentialAny"),
-        .enableUpcomingFeature("InternalImportsByDefault"),
-        .enableUpcomingFeature("MemberImportVisibility"),
-        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-        .enableExperimentalFeature("Lifetimes"),
-        .enableUpcomingFeature("InferIsolatedConformances"),
-    ]
+    target.swiftSettings =
+        (target.swiftSettings ?? []) + [
+            .strictMemorySafety(),
+            .enableUpcomingFeature("ExistentialAny"),
+            .enableUpcomingFeature("InternalImportsByDefault"),
+            .enableUpcomingFeature("MemberImportVisibility"),
+            .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+            .enableUpcomingFeature("InferIsolatedConformances"),
+            .enableExperimentalFeature("Lifetimes"),
+            .treatAllWarnings(as: .error),
+        ]
 }

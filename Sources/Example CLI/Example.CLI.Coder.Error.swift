@@ -13,6 +13,6 @@ extension Example.CLI.Coder {
 
         case missingOperand
 
-        case unknown(domain: Swift.String, operation: Swift.String)
+        case unknown(domain: ISO_9945.Utility.Name, operation: ISO_9945.Utility.Name)
     }
 }
