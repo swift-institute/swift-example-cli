@@ -24,10 +24,10 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/swift-atoms/swift-coder.git", branch: "main"),
         .package(url: "https://github.com/swift-institute/swift-example.git", branch: "main"),
-        .package(url: "https://github.com/swift-institute/swift-example-signature.git", branch: "main"),
-        .package(url: "https://github.com/swift-molecules/swift-iso-9945-coder.git", branch: "main"),
-        .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
+        .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main", traits: ["Coder"]),
         .package(url: "https://github.com/swift-atoms/swift-tagged.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-optic.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-operation.git", branch: "main"),
     ],
     targets: [
         .target(
@@ -35,14 +35,11 @@ let package = Package(
             dependencies: [
                 .product(name: "Coder", package: "swift-coder"),
                 .product(name: "Example", package: "swift-example"),
-                .product(name: "Example Greeting", package: "swift-example"),
-                .product(name: "Example Counter", package: "swift-example"),
-                .product(name: "Example Signature", package: "swift-example-signature"),
-                .product(name: "Example Greeting Signature", package: "swift-example-signature"),
-                .product(name: "Example Counter Signature", package: "swift-example-signature"),
                 .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Utility", package: "swift-iso-9945"),
-                .product(name: "ISO 9945 Utility Coder", package: "swift-iso-9945-coder"),
+                .product(name: "ISO 9945 Utility Coder", package: "swift-iso-9945"),
+                .product(name: "Optic", package: "swift-optic"),
+                .product(name: "Operation", package: "swift-operation"),
                 .product(name: "Tagged", package: "swift-tagged"),
             ]
         ),
@@ -56,12 +53,9 @@ let package = Package(
         .testTarget(
             name: "Example CLI Tests",
             dependencies: [
+                .product(name: "Operation", package: "swift-operation"),
                 "Example CLI",
                 .product(name: "Example", package: "swift-example"),
-                .product(name: "Example Greeting", package: "swift-example"),
-                .product(name: "Example Counter", package: "swift-example"),
-                .product(name: "Example Greeting Signature", package: "swift-example-signature"),
-                .product(name: "Example Counter Signature", package: "swift-example-signature"),
                 .product(name: "Tagged", package: "swift-tagged"),
             ]
         ),

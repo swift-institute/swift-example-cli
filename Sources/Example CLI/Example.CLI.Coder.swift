@@ -1,14 +1,11 @@
 public import Coder
 public import Example
-public import Example_Counter
-public import Example_Counter_Signature
-public import Example_Greeting
-public import Example_Greeting_Signature
-public import Example_Signature
 public import ISO_9945_Core
 public import ISO_9945_Utility
 public import ISO_9945_Utility_Coder
 public import Tagged
+import Operation
+import Optic
 
 extension Example.CLI {
 
@@ -61,7 +58,7 @@ extension Example.CLI {
         ) throws(Example.CLI.Coder.Error) {
             if Example.Call.folds.greeting(output, { call in
                 _ = Example.Greeting.Call.folds.greet(call) { application in
-                    buffer.append(contentsOf: ["greeting", "greet", application.input.underlying])
+                    buffer.append(contentsOf: ["greeting", "greet", application.input.name.underlying])
                 }
             }) {
                 return
@@ -70,7 +67,7 @@ extension Example.CLI {
             if Example.Call.folds.counter(output, { call in
                 _ = Example.Counter.Call.folds.increment(call) { application in
                     buffer.append(
-                        contentsOf: ["counter", "increment", "-l", Swift.String(application.input.underlying)]
+                        contentsOf: ["counter", "increment", "-l", Swift.String(application.input.limit.underlying)]
                     )
                 }
             }) {

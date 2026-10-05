@@ -1,9 +1,6 @@
 import Example
 import Example_CLI
-import Example_Counter
-import Example_Counter_Signature
-import Example_Greeting
-import Example_Greeting_Signature
+import Operation
 import Tagged
 import Testing
 
@@ -20,7 +17,7 @@ struct `Example.CLI.Coder Tests` {
             Issue.record("expected the greeting operation")
             return
         }
-        #expect(application.input == .init("Ada"))
+        #expect(application.input.name == "Ada")
     }
 
     @Test
@@ -33,7 +30,7 @@ struct `Example.CLI.Coder Tests` {
             Issue.record("expected the counter operation")
             return
         }
-        #expect(application.input == .init(3))
+        #expect(application.input.limit == 3)
     }
 
     @Test
