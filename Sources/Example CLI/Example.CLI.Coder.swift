@@ -11,6 +11,12 @@ extension Example.CLI {
 
     public struct Coder: ISO_9945.Utility.Coding<Example.Call, Example.CLI.Coder.Error> {
 
+        public var body: Never {
+            borrowing get {
+                return fatalError("\(Self.self) is a leaf: implement its conformance requirements directly")
+            }
+        }
+
         public init() {}
 
         public borrowing func parse(
