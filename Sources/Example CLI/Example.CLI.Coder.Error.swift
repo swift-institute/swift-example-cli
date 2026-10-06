@@ -5,7 +5,7 @@ public import ISO_9945_Utility_Coder
 
 extension Example.CLI.Coder {
 
-    public enum Error: Swift.Error, Equatable {
+    public enum Error: Swift::Error, Equatable {
 
         case name(ISO_9945.Utility.Name.Coder.Error)
 
