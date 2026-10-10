@@ -24,12 +24,6 @@ extension Example.CLI {
 
 extension Example.CLI.Coder {
 
-    public var body: Never {
-        borrowing get {
-            return fatalError("\(Self.self) is a leaf: implement its conformance requirements directly")
-        }
-    }
-
     public borrowing func parse(
         _ input: inout ArraySlice<Swift::String>
     ) throws(Example.CLI.Coder.Error) -> Example.Call {
