@@ -24,4 +24,4 @@ jobs:
   ci:
     if: ${{ !github.event.repository.private }}
     name: ci / matrix
-    uses: swift-institute/.github/.github/workflows/swift-ci.yml@main
+    uses: swift-institute/.github/.github/workflows/swift-ci.yml@508e1b6d3d7c0c95249245d3a777429ad80cb08c
