@@ -23,7 +23,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swift-atoms/swift-coder.git", branch: "main"),
-        .package(url: "https://github.com/swift-institute/swift-example.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/swift-example.git", branch: "main"),
         .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main", traits: ["Coder"]),
         .package(url: "https://github.com/swift-atoms/swift-tagged.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-optic.git", branch: "main"),
